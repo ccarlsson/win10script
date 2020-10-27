@@ -10,7 +10,7 @@
 #
 #     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://git.io/JJ8R4')"
 # My stuff
-#     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://git.io/JTiHe')"
+#     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://git.io/JTi7H')"
 #
 #	Chris Titus Tech Additions:
 #
@@ -31,11 +31,14 @@ $tweaks = @(
 	"CreateRestorePoint",
 	
 	### Chris Titus Tech Additions
-	"TitusRegistryTweaks",
-	"InstallTitusProgs", #REQUIRED FOR OTHER PROGRAM INSTALLS!
+	#"TitusRegistryTweaks",
+	"InstallChocolatey", #REQUIRED FOR OTHER PROGRAM INSTALLS!
 	#"Install7Zip",
 	#"InstallNotepadplusplus",
-	"InstallNotepad2",
+	"InstallBlender"
+	"InstallVisualStudioCode",
+	"InstallVisualStudio",
+	"InstallNotepad2" #,
 	#"InstallIrfanview",
 	##"InstallVLC",
 	##"InstallAdobe",
@@ -237,7 +240,7 @@ Function TitusRegistryTweaks {
 	If (!(Get-ItemProperty $UpdatesPath  DeferQualityUpdatesPeriodInDays)) { New-ItemProperty -Path $UpdatesPath -Name "ActiveHoursStart" -Type DWord -Value 8 }
 	Set-ItemProperty -Path $UpdatesPath -Name "ActiveHoursStart" -Type DWord -Value 8
 }
-Function InstallTitusProgs {
+Function InstallChocolatey {
 	Write-Output "Installing Chocolatey"
 	Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 	choco install chocolatey-core.extension -y
@@ -282,8 +285,21 @@ Function InstallNotepadplusplus {
 	Show-Choco-Menu -Title "Do you want to install Notepad++?" -ChocoInstall "notepadplusplus"
 }
 
+Function InstallBlender {
+	Show-Choco-Menu -Title "Do you want to install Blender" -ChocoInstall "blender"
+}
+
 Function InstallNotepad2 {
 	Show-Choco-Menu -Title "Do you want to install Notepad2" -ChocoInstall "notepad2" 
+}
+
+Function InstallVisualStudioCode {
+	Show-Choco-Menu -Title "Do you want to install Visual Studio Code" -ChocoInstall "vscode"
+}
+
+
+Function InstallVisualStudio {
+	Show-Choco-Menu -Title "Do you want to install Visual Studio" -ChocoInstall "visualstudio2019community"
 }
 
 Function InstallVLC {
