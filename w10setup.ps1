@@ -10,7 +10,7 @@
 #
 #     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://git.io/JJ8R4')"
 # My stuff
-#     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://git.io/JTi7H')"
+#     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://git.io/JTPJV')"
 #
 #	Chris Titus Tech Additions:
 #
